@@ -43,13 +43,13 @@ function New-LocalClonedGitHubRepository
 
     if ($OverwriteDirectory -and (Test-Path $RepositoryDirectory))
     {
-        Remove-Item $RepositoryDirectory -Recurse -Force
+        [System.IO.Directory]::Delete($RepositoryDirectory, $true)
     }
 
     $GitHubRepositoryName = [System.Net.WebUtility]::UrlEncode($GitHubRepositoryName)
     $repositoryUrl = "$Global:GitHubUsernamePasswordUrl/{0}.git" -f $GitHubRepositoryName
 
-    Start-Process $Global:GitPath -ArgumentList clone,$repositoryUrl,$RepositoryDirectory -Wait -WindowStyle Hidden
+    Start-Process $Global:GitPath -ArgumentList clone,`"$repositoryUrl`",`"$RepositoryDirectory`" -Wait -WindowStyle Hidden
 
     Set-GetHubOriginRemote -GitHubRepositoryName $GitHubRepositoryName -RepositoryDirectory $RepositoryDirectory
 }
@@ -66,10 +66,10 @@ function New-LocalGitHubRepository
 
     if ($OverwriteDirectory -and (Test-Path $RepositoryDirectory))
     {
-        Remove-Item $RepositoryDirectory -Recurse -Force -ErrorAction Stop
+        [System.IO.Directory]::Delete($RepositoryDirectory, $true)
     }
 
-    Start-Process $Global:GitPath -ArgumentList init,--quiet,$RepositoryDirectory -Wait -WindowStyle Hidden
+    Start-Process $Global:GitPath -ArgumentList init,--quiet,`"$RepositoryDirectory`" -Wait -WindowStyle Hidden
 
     Set-GetHubOriginRemote -GitHubRepositoryName $GitHubRepositoryName -RepositoryDirectory $RepositoryDirectory
 }
