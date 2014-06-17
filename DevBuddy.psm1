@@ -2,7 +2,7 @@
 
 Set-StrictMode -Version latest
 
-if (Get-Module dev-buddy)
+if (Get-Module DevBuddy)
 {
     return
 }
