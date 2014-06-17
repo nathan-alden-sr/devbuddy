@@ -11,7 +11,7 @@ DevBuddy is a PowerShell module consisting of useful PowerShell scripts that aut
 
 Clone the repository:
 
-`git clone https://github.com/tanksoft-llc/devbuddy-extensions.git`
+`git clone https://github.com/nathan-alden/devbuddy`
 
 Install the module from PowerShell:
 
