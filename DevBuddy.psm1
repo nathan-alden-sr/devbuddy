@@ -43,7 +43,15 @@ Export-ModuleMember `
         "Get-GitHubTeamId",
         
         #visual-studio.ps1
-        "New-VisualStudioRepository") `
+        "New-VisualStudioRepository",
+        "Get-VisualStudioSolutionProjectMatches",
+        "Reset-VisualStudioSolutionProjectGuids",
+        "Set-VisualStudioSolutionProjectRootNamespaces",
+        "Set-VisualStudioSolutionProjectAssemblyNames",
+        "Set-VisualStudioSolutionProjectAssemblyInfoAttributes",
+        "Set-VisualStudioSolutionCodeNamespaces",
+        "Set-VisualStudioSolutionGlobalAsaxInheritsNamespaces",
+        "Set-VisualStudioSolutionProjectRandomIisUrlPort") `
     -Variable @(
         #git.ps1
         "GitPath",
