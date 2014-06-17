@@ -4,6 +4,69 @@
 [string]$GitHubApiUrl = $null
 [System.Collections.IDictionary]$GitHubHeaders = $null
 
+<#
+
+.SYNOPSIS
+
+Initializes GitHub support in the current session.
+
+
+.DESCRIPTION
+
+The Initialize-GitHub function initializes several parameters that are necessary to access the GitHub API.
+Parameters consist of various GitHub URLs and headers necessar for authorization.
+The variables are stored in the current session.
+
+If a clear-text password is not provided, the user will be prompted to enter one.
+Authentication will not be performed when calling Initialize-GitHub; authorization is only performed when calling subsequent GitHub-specific functions.
+
+
+.PARAMETER $Username
+
+A GitHub username.
+
+
+.PARAMETER $ClearTextPassword
+
+A clear-text password.
+
+If unspecified, the user will be prompted to enter their password.
+
+
+.PARAMETER $Organization
+
+The name of a GitHub organization.
+
+If unspecified, no organization will be used for subsequent API calls.
+
+
+.EXAMPLE
+
+Initializes GitHub support for a user named foo-bar. The user is prompted to enter their password.
+
+Initialize-GitHub foo-bar
+
+
+.EXAMPLE
+
+Initializes GitHub support for a user named foo-bar. The user is not prompted to enter their password.
+
+Initialize-GitHub foo-bar mypass123
+
+
+.EXAMPLE
+
+Initializes GitHub support for an organization named example-org. The user is prompted to enter their password.
+
+Initialize-GitHub foo-bar -Organization example-org
+
+
+.NOTES
+
+If GitHub is initialized without an organization then all API calls will associate with the provided username; otherwise, all API calls will associate with the provided organization.
+
+
+#>
 function Initialize-GitHub
 {
     [CmdletBinding()]

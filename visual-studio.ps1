@@ -1,3 +1,34 @@
+<#
+
+.SYNOPSIS
+
+Populates a repository with files useful for Visual Studio solutions.
+
+
+.DESCRIPTION
+
+The New-VisualStudioRepository copies files useful for Visual Studio solutions into a local directory.
+
+
+.PARAMETER $RepositoryDirectory
+
+The directory into which files are copied.
+
+
+.PARAMETER $OverwriteDirectory
+
+Determines if an existing directory is deleted before copying files.
+
+If unspecified, an existing directory will not be deleted.
+
+
+.EXAMPLE
+
+Deletes an existing directory, then copies files into the foo-bar repository.
+
+New-VisualStudioRepository C:\Git\foo-bar -OverwriteDirectory
+
+#>
 function New-VisualStudioRepository
 {
     [CmdletBinding()]

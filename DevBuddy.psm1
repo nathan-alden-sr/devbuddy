@@ -20,6 +20,12 @@ Pop-Location
 
 Export-ModuleMember `
     -Function @(
+        # common.ps1
+        "Convert-SecureStringToString",
+        "Get-ProgramFilesX86Directory",
+        "Select-MatchesInContent",
+        "Set-MatchReplacementsInContent"
+
         # git.ps1
         "Initialize-Git",
 
@@ -31,6 +37,7 @@ Export-ModuleMember `
         "New-GitHubRepository",
         "New-LocalGitHubRepository",
         "New-LocalClonedGitHubRepository",
+        "Set-GitHubOriginRemote",
 
         # github-teams.ps1
         "Get-GitHubTeamId",
