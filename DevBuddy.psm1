@@ -43,4 +43,14 @@ Export-ModuleMember `
         "Get-GitHubTeamId",
         
         #visual-studio.ps1
-        "New-VisualStudioRepository")
+        "New-VisualStudioRepository") `
+    -Variable @(
+        #git.ps1
+        "GitPath",
+
+        #github.ps1
+        "GitHubUrl",
+        "GitHubUsernameUrl",
+        "GitHubUsernamePasswordUrl",
+        "GitHubApiUrl",
+        "GitHubHeaders")

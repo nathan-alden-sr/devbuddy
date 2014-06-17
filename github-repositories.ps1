@@ -283,5 +283,5 @@ function Set-GitHubOriginRemote
         [string]$RepositoryDirectory)
 
     Start-Process $Global:GitPath -WorkingDirectory $RepositoryDirectory -ArgumentList remote,remove,origin -Wait -WindowStyle Hidden
-    Start-Process $Global:GitPath -WorkingDirectory $RepositoryDirectory -ArgumentList remote,add,origin,$Global:GitHubUsernameUrl -Wait -WindowStyle Hidden
+    Start-Process $Global:GitPath -WorkingDirectory $RepositoryDirectory -ArgumentList remote,add,origin,"$Global:GitHubUsernameUrl/$GitHubRepositoryName" -Wait -WindowStyle Hidden
 }
