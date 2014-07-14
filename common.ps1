@@ -168,3 +168,75 @@ function Set-MatchReplacementsInContent
 
     Set-Content $Path $content
 }
+
+function Wait-True
+{
+    <#
+
+    .SYNOPSIS
+
+    Repeatedly evalutes a script block until it returns $true.
+
+
+    .DESCRIPTION
+
+    The Wait-True function repeatedly evalutes a script block until it returns $true.
+    Optionally, evaluation may be retried with a delay.
+    Exceptions count as a failure to return $true.
+
+
+    .PARAMETER $ScriptBlock
+
+    A script block.
+
+
+    .PARAMETER $DelayInMilliseconds
+
+    A delay, in milliseconds, between each attempt.
+
+    If unspecified, the delay will be 1000 milliseconds.
+
+
+    .PARAMETER $MaximumAttempts
+
+    The maximum number of times to invoke the function.
+
+    If unspecified, the script block will only be evaluated once.
+
+
+    .EXAMPLE
+
+    Wait-True { (Get-Date).Minute % 2 -eq 0 } 1000 120
+
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [ScriptBlock]$ScriptBlock,
+        [Parameter(Mandatory=$true)]
+        [int]$DelayInMilliseconds = 1000,
+        [int]$MaximumAttempts = 1)
+
+        [int]$attempts = 0
+
+    while (++$attempts -le $MaximumAttempts)
+    {
+        try 
+        {
+            if ($ScriptBlock.Invoke() -eq $true)
+            {
+                return $true
+            }
+            else
+            {
+                Start-Sleep -Milliseconds $DelayInMilliseconds
+            }
+        }
+        catch
+        {
+            Start-Sleep -Milliseconds $DelayInMilliseconds
+        }
+    }
+
+    return $false
+}
