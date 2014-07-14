@@ -24,7 +24,8 @@ Export-ModuleMember `
         "Convert-SecureStringToString",
         "Get-ProgramFilesX86Directory",
         "Select-MatchesInContent",
-        "Set-MatchReplacementsInContent"
+        "Set-MatchReplacementsInContent",
+        "Wait-True"
 
         # git.ps1
         "Initialize-Git",
@@ -42,7 +43,7 @@ Export-ModuleMember `
         # github-teams.ps1
         "Get-GitHubTeamId",
         
-        #visual-studio.ps1
+        # visual-studio.ps1
         "New-VisualStudioRepository",
         "Get-VisualStudioSolutionProjectMatches",
         "Reset-VisualStudioSolutionProjectGuids",
@@ -53,10 +54,10 @@ Export-ModuleMember `
         "Set-VisualStudioSolutionGlobalAsaxInheritsNamespaces",
         "Set-VisualStudioSolutionProjectRandomIisUrlPort") `
     -Variable @(
-        #git.ps1
+        # git.ps1
         "GitPath",
 
-        #github.ps1
+        # github.ps1
         "GitHubUrl",
         "GitHubUsernameUrl",
         "GitHubUsernamePasswordUrl",
